@@ -4,7 +4,7 @@ Inteli - Engenharia de Software | Avaliação 2023-2B P2
 # Vulnerabilidades encontradas
 
 ## SQL Injection
-Antes, a rota '/vote/:animalType/:id' estava vulnerável a SQL Injection, porque não realizava nenhum filtro de inputs. Agora, ela filtra e recebe apenas os valores 'dogs' e 'cats', além disso, possui uma verificação no ID, que valida se ele é um número ou não. 
+Antes, a rota '/vote/:animalType/:id' estava vulnerável a SQL Injection, porque não realizava nenhum filtro de inputs. Agora, ela filtra e recebe apenas os valores 'dogs' e 'cats', além disso, possui uma verificação no ID, que valida se ele é um número decimal, maior que 0, e existente na base de dados. 
 
 ## Id autoincrement
 Antes, o ID não era colocado corretamente na base de dados. Agora, existe a autoincrementação de IDs na base de dados, e a utilização de chave primária no ID.
