@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 const db = new sqlite3.Database(':memory:');
 
 
+//criação de tabelas com tratamento de erros
 db.serialize(() => {
   db.run("CREATE TABLE cats (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, votes INT)", (err) => {
     if (err) {
@@ -51,14 +52,13 @@ app.post('/dogs', (req, res) => {
 
 app.post('/vote/:animalType/:id', (req, res) => {
   const { animalType, id } = req.params;
-
-  // codigo abaixo valida se a API recebe os parâmetros corretos
-
+  //verifica se é o animal correto
   if (animalType !== 'cats' && animalType !== 'dogs') {
     return res.status(400).send("Tipo de animal inválido");
   }
-  
-  if (isNaN(id)) {
+  //verifica se é um numero inteiro
+  const parsedId = parseInt(id, 10);
+  if (isNaN(parsedId) || parsedId <= 0) {
     return res.status(400).send("ID inválido");
   }
 
@@ -67,11 +67,9 @@ app.post('/vote/:animalType/:id', (req, res) => {
     if (err) {
       return res.status(500).send("Erro ao atualizar o banco de dados");
     }
-
     if (this.changes === 0) {
       return res.status(404).send("ID não encontrado");
     }
-
     res.status(200).send("Voto computado");
   });
 });

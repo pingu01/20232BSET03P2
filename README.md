@@ -13,4 +13,24 @@ Antes, o ID não era colocado corretamente na base de dados. Agora, existe a aut
 As funções GET e POST '/dogs' estavam sem funções, agora elas possuem funções como as rotas '/cats'
 
 ## Observações
-Nenhum dos erros que podem ocorrer vazam detalhes de implementação. 
+Nenhum dos erros que podem ocorrer vazam detalhes de implementação. Além disso, foi adicionado tratamento de erros na criação das tabelas.
+
+## Prova de conceito
+
+### Rota /cats
+#### Criação de gato
+<img src='./assets/post-cat.png'>
+<img src='./assets/get-cat.png'>
+
+#### Validação de votos
+<img src='./assets/voting-in-cat.png'>
+<img src='./assets/voted-cat.png'>
+
+### Rota /dogs
+#### Criação de cachorro
+<img src='./assets/post-dog.png'>
+<img src='./assets/get-dog.png'>
+
+#### Validação de votos
+<img src='./assets/voting-in-dog.png'>
+<img src='./assets/voted-dog.png'>
